@@ -2,45 +2,110 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Be My Valentine?</title>
+  <title>Thandolwethu 💖</title>
+
+  <!-- Confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
       color: white;
       height: 100vh;
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 40px;
-      border-radius: 20px;
       text-align: center;
-      max-width: 350px;
     }
-    button {
-      padding: 12px 25px;
-      border: none;
+
+    .card {
+      background: rgba(255, 255, 255, 0.18);
+      padding: 40px;
       border-radius: 25px;
-      font-size: 16px;
-      margin: 10px;
-      cursor: pointer;
+      max-width: 380px;
+      backdrop-filter: blur(10px);
     }
+
+    button {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      margin: 12px;
+      cursor: pointer;
+      position: relative;
+    }
+
     .yes {
       background: white;
       color: #ff5a8a;
+      font-weight: bold;
+    }
+
+    .no {
+      background: rgba(255,255,255,0.3);
+      color: white;
+      position: absolute;
+    }
+
+    iframe {
+      display: none;
     }
   </style>
 </head>
 <body>
+
   <div class="card">
-    <h1>Will you be my Valentine? 💌</h1>
-    <p>I was going to ask in person… but this felt cuter.</p>
-    <button class="yes" onclick="alert('YAY 💖 See you soon!')">Yes 💖</button>
-    <button onclick="alert('Nice try 😌')">No</button>
+    <h1>Thandolwethu 💌</h1>
+    <p>
+      Your name means <strong>our love</strong> —<br>
+      so this feels kind of inevitable 😌  
+      <br><br>
+      Will you be my Valentine?
+    </p>
+
+    <button class="yes" onclick="yesClicked()">Yes 💖</button>
+    <button class="no" id="noBtn">No</button>
   </div>
+
+  <!-- Hidden music -->
+  <iframe
+    id="song"
+    src="https://www.youtube.com/embed/0W7S0Z7EwYI?enablejsapi=1&mute=1"
+    allow="autoplay"
+  ></iframe>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    function yesClicked() {
+      const iframe = document.getElementById("song");
+      iframe.src = iframe.src.replace("mute=1", "mute=0&autoplay=1");
+
+      confetti({
+        particleCount: 200,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
+
+      setTimeout(() => {
+        const message = encodeURIComponent(
+          "Yes 💖\n\nClay painting date confirmed 🫶🏽\nHyde Park, 1pm.\nI’m excited already 😌"
+        );
+        window.location.href = "https://wa.me/?text=" + message;
+      }, 2200);
+    }
+  </script>
+
 </body>
 </html>
+
