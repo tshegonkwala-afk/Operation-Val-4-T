@@ -2,46 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Thandolwethu 💖</title>
+  <title>Valentine 💖</title>
 
-  <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      color: white;
-      height: 100vh;
       margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
       display: flex;
       justify-content: center;
       align-items: center;
+      font-family: Arial, sans-serif;
+      color: white;
       text-align: center;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.18);
-      padding: 35px;
-      border-radius: 25px;
-      max-width: 380px;
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.2);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 350px;
     }
 
     img {
       width: 100%;
       border-radius: 15px;
-      margin: 15px 0;
+      margin-bottom: 15px;
     }
 
     button {
-      padding: 14px 28px;
+      padding: 12px 25px;
       border: none;
-      border-radius: 30px;
+      border-radius: 25px;
+      margin: 8px;
       font-size: 16px;
-      margin: 10px;
       cursor: pointer;
-      position: relative;
     }
 
     .yes {
@@ -53,7 +50,11 @@
     .no {
       background: rgba(255,255,255,0.3);
       color: white;
-      position: absolute;
+    }
+
+    #after {
+      display: none;
+      margin-top: 15px;
     }
 
     audio {
@@ -64,48 +65,35 @@
 <body>
 
   <div class="card">
-    <h1>Thandolwethu 💌</h1>
-
-    <!-- GIF -->
-    <img 
-      src="https://media.tenor.com/8iG6n5E6ZfQAAAAC/minion-ominous.gif"
-      alt="ominous minion"
-    >
+    <img src="minion.gif" alt="ominous minion">
 
     <p>
       Would you do me the honour<br>
       of being my Valentine? 💖
     </p>
 
-    <button class="yes" onclick="yesClicked()">Yes 💖</button>
-    <button class="no" id="noBtn">No</button>
+    <button class="yes" onclick="yes()">Yes 💖</button>
+    <button class="no">No</button>
+
+    <div id="after">
+      See you at <strong>Hyde Park</strong> 🫶🏽<br>
+      <strong>1pm</strong> — clay painting date 🎨
+    </div>
   </div>
 
-  <!-- Audio file -->
   <audio id="song">
-    <source src="Until The End Of Time.mp3" type="audio/mpeg">
+    <source src="until-end-of-time.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    const noBtn = document.getElementById("noBtn");
-    const song = document.getElementById("song");
+    function yes() {
+      document.getElementById("after").style.display = "block";
 
-    // Runaway NO button
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * (window.innerWidth - 120);
-      const y = Math.random() * (window.innerHeight - 60);
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    });
+      document.getElementById("song").play();
 
-    function yesClicked() {
-      // Play music (allowed because user clicked)
-      song.play();
-
-      // Confetti
       confetti({
-        particleCount: 200,
-        spread: 90,
+        particleCount: 150,
+        spread: 80,
         origin: { y: 0.6 }
       });
     }
@@ -113,4 +101,5 @@
 
 </body>
 </html>
+
 
