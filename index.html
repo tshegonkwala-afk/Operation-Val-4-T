@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title> 💖</title>
+  <title> Valentine?💖</title>
 
   <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -20,12 +20,25 @@
       text-align: center;
     }
 
+    /* Fade-in animation */
     .card {
       background: rgba(255, 255, 255, 0.18);
       padding: 35px;
       border-radius: 25px;
       max-width: 400px;
       backdrop-filter: blur(10px);
+      animation: fadeIn 1.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     button {
@@ -38,10 +51,20 @@
       position: relative;
     }
 
+    /* Heartbeat animation */
     .yes {
       background: white;
       color: #ff5a8a;
       font-weight: bold;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.05); }
+      40% { transform: scale(1); }
+      60% { transform: scale(1.08); }
+      100% { transform: scale(1); }
     }
 
     .no {
@@ -53,14 +76,23 @@
     audio {
       display: none;
     }
+
+    /* Message after YES */
+    .after-yes {
+      display: none;
+      margin-top: 20px;
+      font-size: 17px;
+      line-height: 1.4;
+      animation: fadeIn 1.2s ease forwards;
+    }
   </style>
 </head>
 <body>
 
   <div class="card">
-    <h1>💌</h1>
+    <h1>Thandolwethu 💌</h1>
 
-    <!-- TENOR GIF EMBED (official) -->
+    <!-- Tenor GIF -->
     <div
       class="tenor-gif-embed"
       data-postid="14209197328315948440"
@@ -68,52 +100,31 @@
       data-aspect-ratio="0.948276"
       data-width="100%">
       <a href="https://tenor.com/view/forest-minion-minion-forest-spooky-minion-ominous-ominous-minion-gif-14209197328315948440">
-        Forest Minion Minion Forest Meme
+        Forest Minion
       </a>
     </div>
 
-    <p>
+    <p id="question">
       Would you do me the honour<br>
       of being my Valentine? 💖
     </p>
 
-    <button class="yes" onclick="yesClicked()">Yes 💖</button>
+    <button class="yes" id="yesBtn" onclick="yesClicked()">Yes 💖</button>
     <button class="no" id="noBtn">No</button>
+
+    <!-- Message revealed after YES -->
+    <div class="after-yes" id="afterYes">
+      See you at <strong>Hyde Park</strong> 🫶🏽<br>
+      <strong>1pm</strong> — clay painting date 🎨  
+      <br><br>
+      I’m really looking forward to it 😌
+    </div>
   </div>
 
-  <!-- AUDIO -->
+  <!-- Audio -->
   <audio id="song">
     <source src="Until The End Of Time.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Tenor script MUST be after the embed -->
-  <script async src="https://tenor.com/embed.js"></script>
-
-  <script>
-    const noBtn = document.getElementById("noBtn");
-    const song = document.getElementById("song");
-
-    // Runaway NO button
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * (window.innerWidth - 120);
-      const y = Math.random() * (window.innerHeight - 60);
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    });
-
-    function yesClicked() {
-      // Play music (user interaction = allowed)
-      song.play();
-
-      // Confetti
-      confetti({
-        particleCount: 200,
-        spread: 90,
-        origin: { y: 0.6 }
-      });
-    }
-  </script>
-
-</body>
-</html>
+  <!-- Te
 
