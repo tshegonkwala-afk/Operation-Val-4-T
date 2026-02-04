@@ -2,17 +2,16 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const message = document.getElementById("message");
 const buttonArea = document.getElementById("buttonArea");
-const minionGif = document.getElementById("minionGif");
 
 const messageText = "Here's to a wonderful afternoon clay painting.";
 
 const moveNoButton = () => {
   const areaRect = buttonArea.getBoundingClientRect();
   const btnRect = noBtn.getBoundingClientRect();
-  const maxX = areaRect.width - btnRect.width;
-  const maxY = areaRect.height - btnRect.height;
-  const randomX = Math.max(0, Math.random() * maxX);
-  const randomY = Math.max(0, Math.random() * maxY);
+  const maxX = Math.max(0, areaRect.width - btnRect.width);
+  const maxY = Math.max(0, areaRect.height - btnRect.height);
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
 
   noBtn.style.left = `${randomX}px`;
   noBtn.style.top = `${randomY}px`;
@@ -40,7 +39,7 @@ const launchConfetti = () => {
 };
 
 noBtn.addEventListener("mouseenter", moveNoButton);
-noBtn.addEventListener("click", moveNoButton);
+noBtn.addEventListener("pointerdown", moveNoButton);
 noBtn.addEventListener("touchstart", (event) => {
   event.preventDefault();
   moveNoButton();
@@ -48,6 +47,5 @@ noBtn.addEventListener("touchstart", (event) => {
 
 yesBtn.addEventListener("click", () => {
   message.innerText = messageText;
-  minionGif.hidden = false;
   launchConfetti();
 });
