@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title> Valentine💖</title>
+  <title>Valentine 💖</title>
 
   <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -20,7 +20,6 @@
       text-align: center;
     }
 
-    /* Fade-in animation */
     .card {
       background: rgba(255, 255, 255, 0.18);
       padding: 35px;
@@ -41,6 +40,12 @@
       }
     }
 
+    img {
+      width: 100%;
+      border-radius: 15px;
+      margin: 15px 0;
+    }
+
     button {
       padding: 14px 28px;
       border: none;
@@ -51,7 +56,6 @@
       position: relative;
     }
 
-    /* Heartbeat animation */
     .yes {
       background: white;
       color: #ff5a8a;
@@ -64,58 +68,5 @@
       25% { transform: scale(1.05); }
       40% { transform: scale(1); }
       60% { transform: scale(1.08); }
-      100% { transform: scale(1); }
-    }
-
-    .no {
-      background: rgba(255,255,255,0.3);
-      color: white;
-      position: absolute;
-    }
-
-    audio {
-      display: none;
-    }
-
-    /* Message after YES */
-    .after-yes {
-      display: none;
-      margin-top: 20px;
-      font-size: 17px;
-      line-height: 1.4;
-      animation: fadeIn 1.2s ease forwards;
-    }
-  </style>
-</head>
-<body>
-
-<img src="./minion.gif" alt="ominous minion" style="width:100%; border-radius:15px; margin:15px 0;">
-
-
-
-
-    <p id="question">
-      Would you do me the honour<br>
-      of being my Valentine? 💖
-    </p>
-
-    <button class="yes" id="yesBtn" onclick="yesClicked()">Yes 💖</button>
-    <button class="no" id="noBtn">No</button>
-
-    <!-- Message revealed after YES -->
-    <div class="after-yes" id="afterYes">
-      See you at <strong>Hyde Park</strong> 🫶🏽<br>
-      <strong>1pm</strong> — clay painting date 🎨  
-      <br><br>
-      I’m really looking forward to it 😌
-    </div>
-  </div>
-
-  <!-- Audio -->
-<audio id="song" preload="auto">
-  <source src="./until-end-of-time.mp3" type="audio/mpeg">
-</audio>
-
-
-  <!-- Te
+      100%
 
