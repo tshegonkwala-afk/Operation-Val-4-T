@@ -1,65 +1,53 @@
-* {
-  box-sizing: border-box;
-}
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("message");
+const buttonArea = document.getElementById("buttonArea");
+const minionGif = document.getElementById("minionGif");
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #ff9acb, #ffd1e8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
-}
+const messageText = "Here's to a wonderful afternoon clay painting.";
 
-.card {
-  background: #fff0f6;
-  padding: 16px;
-  border-radius: 20px;
-  text-align: center;
-  width: 92%;
-  max-width: 360px;
-}
+const moveNoButton = () => {
+  const areaRect = buttonArea.getBoundingClientRect();
+  const btnRect = noBtn.getBoundingClientRect();
+  const maxX = areaRect.width - btnRect.width;
+  const maxY = areaRect.height - btnRect.height;
+  const randomX = Math.max(0, Math.random() * maxX);
+  const randomY = Math.max(0, Math.random() * maxY);
 
-.gif {
-  width: 100%;
-  height: auto;
-  border-radius: 15px;
-  margin-bottom: 12px;
-  display: block;
-}
+  noBtn.style.left = `${randomX}px`;
+  noBtn.style.top = `${randomY}px`;
+};
 
-h1 {
-  color: #b30059;
-  font-size: 1.4rem;
-  margin: 10px 0 15px;
-}
+const launchConfetti = () => {
+  const colors = ["#ff4d88", "#ffd1e8", "#ffb3c7", "#b30059", "#ffe6ee"];
+  const pieces = 80;
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-}
+  for (let i = 0; i < pieces; i += 1) {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = `${Math.random() * 100}vw`;
+    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.setProperty("--x", `${(Math.random() - 0.5) * 200}px`);
+    confetti.style.animationDelay = `${Math.random() * 0.3}s`;
+    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
 
-button {
-  width: 48%;
-  padding: 12px 0;
-  font-size: 1rem;
-  border: none;
-  border-radius: 25px;
-}
+    document.body.appendChild(confetti);
 
-#yesBtn {
-  background: #ff4d88;
-  color: white;
-}
+    confetti.addEventListener("animationend", () => {
+      confetti.remove();
+    });
+  }
+};
 
-#noBtn {
-  background: #ffe6ee;
-  color: #b30059;
-}
+noBtn.addEventListener("mouseenter", moveNoButton);
+noBtn.addEventListener("click", moveNoButton);
+noBtn.addEventListener("touchstart", (event) => {
+  event.preventDefault();
+  moveNoButton();
+});
 
-#message {
-  margin-top: 18px;
-  font-size: 1.05rem;
-  color: #800040;
-}
+yesBtn.addEventListener("click", () => {
+  message.innerText = messageText;
+  minionGif.hidden = false;
+  launchConfetti();
+});
