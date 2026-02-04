@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Valentine 💖</title>
+  <title>Thandolwethu 💖</title>
 
   <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -24,20 +24,8 @@
       background: rgba(255, 255, 255, 0.18);
       padding: 35px;
       border-radius: 25px;
-      max-width: 400px;
+      max-width: 380px;
       backdrop-filter: blur(10px);
-      animation: fadeIn 1.6s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     img {
@@ -60,13 +48,69 @@
       background: white;
       color: #ff5a8a;
       font-weight: bold;
-      animation: heartbeat 1.5s infinite;
     }
 
-    @keyframes heartbeat {
-      0% { transform: scale(1); }
-      25% { transform: scale(1.05); }
-      40% { transform: scale(1); }
-      60% { transform: scale(1.08); }
-      100%
+    .no {
+      background: rgba(255,255,255,0.3);
+      color: white;
+      position: absolute;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Thandolwethu 💌</h1>
+
+    <!-- GIF -->
+    <img 
+      src="https://media.tenor.com/8iG6n5E6ZfQAAAAC/minion-ominous.gif"
+      alt="ominous minion"
+    >
+
+    <p>
+      Would you do me the honour<br>
+      of being my Valentine? 💖
+    </p>
+
+    <button class="yes" onclick="yesClicked()">Yes 💖</button>
+    <button class="no" id="noBtn">No</button>
+  </div>
+
+  <!-- Audio file -->
+  <audio id="song">
+    <source src="Until The End Of Time.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const song = document.getElementById("song");
+
+    // Runaway NO button
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 60);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    function yesClicked() {
+      // Play music (allowed because user clicked)
+      song.play();
+
+      // Confetti
+      confetti({
+        particleCount: 200,
+        spread: 90,
+        origin: { y: 0.6 }
+      });
+    }
+  </script>
+
+</body>
+</html>
 
