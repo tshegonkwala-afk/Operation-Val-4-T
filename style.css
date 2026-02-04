@@ -1,13 +1,104 @@
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-const message = document.getElementById("message");
+* {
+  box-sizing: border-box;
+}
 
-yesBtn.onclick = () => {
-  message.innerText =
-    "Here’s to a wonderful afternoon in Hyde Park, clay painting together and making something beautiful 🥰🎨";
-};
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #ff7eb9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  padding: 20px;
+}
 
-noBtn.onclick = () => {
-  message.innerText = "Nice try 😌";
-};
+.card {
+  background: #fff0f6;
+  padding: 18px;
+  border-radius: 24px;
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  box-shadow: 0 12px 30px rgba(179, 0, 89, 0.18);
+}
 
+.gif {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+h1 {
+  color: #b30059;
+  font-size: 1.35rem;
+  margin: 10px 0 18px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  position: relative;
+  min-height: 120px;
+}
+
+button {
+  width: 48%;
+  padding: 12px 0;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+#yesBtn {
+  background: #ff4d88;
+  color: white;
+  z-index: 1;
+}
+
+#noBtn {
+  background: #ffe6ee;
+  color: #b30059;
+  position: absolute;
+  left: 52%;
+  top: 0;
+}
+
+#message {
+  margin-top: 18px;
+  font-size: 1.05rem;
+  color: #800040;
+  min-height: 24px;
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 14px;
+  background: #ff4d88;
+  top: -20px;
+  left: 50%;
+  opacity: 0.9;
+  animation: fall 2.8s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(var(--x), 110vh, 0) rotate(360deg);
+    opacity: 0;
+  }
+}
