@@ -8,7 +8,11 @@
 </head>
 <body>
 
-  <audio id="loveSong" src="music.mp3"></audio>
+  <audio id="loveSong" preload="auto">
+  <source src="music.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
 
   <div class="card">
     <img src="love.gif" alt="Love" class="gif">
