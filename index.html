@@ -64,8 +64,110 @@
 </head>
 <body>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.2);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 350px;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      margin: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .yes {
+      background: white;
+      color: #ff5a8a;
+      font-weight: bold;
+    }
+
+    .no {
+      background: rgba(255,255,255,0.3);
+      color: white;
+    }
+
+    #after {
+      display: none;
+      margin-top: 15px;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
   <div class="card">
     <img src="minion.gif" alt="ominous minion">
+
+    <p>
+      Would you do me the honour<br>
+      of being my Valentine? 💖
+    </p>
+
+    <button class="yes" onclick="yes()">Yes 💖</button>
+    <button class="no">No</button>
+
+    <div id="after">
+      See you at <strong>Hyde Park</strong> 🫶🏽<br>
+      <strong>1pm</strong> — clay painting date 🎨
+    </div>
+  </div>
+
+  <audio id="song">
+    <source src="until-end-of-time.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function yes() {
+      document.getElementById("after").style.display = "block";
+
+      document.getElementById("song").play();
+
+      confetti({
+        particleCount: 150,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
+    }
+  </script>
+
+</body>
+</html>
+
 
     <p>
       Would you do me the honour<br>
