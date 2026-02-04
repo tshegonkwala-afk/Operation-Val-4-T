@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff9acb, #ffd1e8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  background: #fff0f6;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 350px;
+  width: 90%;
+}
+
+.gif {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  color: #b30059;
+  font-size: 1.5rem;
+}
+
+.buttons {
+  margin-top: 15px;
+}
+
+button {
+  padding: 12px 20px;
+  margin: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#yesBtn {
+  background: #ff4d88;
+  color: white;
+}
+
+#noBtn {
+  background: #ffe6ee;
+  color: #b30059;
+}
+
+#message {
+  margin-top: 20px;
+  color: #800040;
+  font-size: 1.1rem;
+}
